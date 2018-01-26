@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-bind实例</h1>
+<hr>
+<div id="app">
+    <p><img v-bind:src="imgsrc" width="200px" alt=""></p>
+    <p><a :href="weburl" target="_blank">技术胖</a></p>
+    <hr>
+    <div :class="className">1.绑定class</div>
+    <div :class="{classA:isok}">2.绑定class中的判断</div>
+    <div :class="[classA,classB]">3.绑定class中的数组</div>
+    <div :class="isok?classA:classB">4.绑定class中的三元运算符</div>
+    <hr>
+    <div>
+        <input type="checkbox" id="isok" v-model="isok">
+        <label for="isok">isok={{isok}}</label>
+    </div>
+    <hr>
+    <div :style="{color:blue,fontSize:font}">5.绑定style</div>
+    <div :style="styleObject">6.对象绑定style</div>
+</div>
+<style>
+    .classA{
+        color: red;
+    }
+    .classB{
+        font-size: 50px;
+    }
+</style>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+           imgsrc:'http://jspang.com/wp-content/uploads/2018/01/VUE-timeline.jpg',
+            weburl:'http://jspang.com',
+            className:'classA',
+            isok:false,
+            classA:'classA',
+            classB:'classB',
+            blue:'blue',
+            font:'30px',
+            styleObject:{
+               color:'green',
+                fontSize:'24px'
+            }
+        }
+    })
+</script>
+</body>
+</html>
