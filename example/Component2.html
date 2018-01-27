@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-2</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>component-2</h1>
+<hr>
+<div id="app">
+    <!--自定义指令和组件的区别：就是指令是定义的是标签的属性
+    组件定义的是标签-->
+
+    <zf here="china"></zf>
+    <zf v-bind:here="message"></zf>
+</div>
+<!--<div id="ppa">
+    <zhangfan></zhangfan>
+</div>-->
+<script>
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            message:'china'
+        },
+        components:{
+            'zf':{
+                template:`<div style="color:red">zf from {{ here }}</div>`,
+                props:['here']
+            }
+        }
+    })
+    /*var ppa=new Vue({
+            el:"#ppa",
+
+        })*/
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot content extend Demo</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Slot content extend Demo</h1>
+<hr>
+<div id="app">
+    <zhangfan> <!--组件-->
+        <!--slot传值-->
+        <span slot="bolgUrl">{{zhangfanData.bolgUrl}}</span>
+        <span slot="netName">{{zhangfanData.netName}}</span>
+        <span slot="skill">{{zhangfanData.skill}}</span>
+    </zhangfan>
+</div>
+
+<template id="tep"><!-- 模板-->
+   <div>
+       <!--slot接收值-->
+       <p>博客地址：<slot name="bolgUrl"></slot></p>
+       <p>网名：<slot name="netName"></slot></p>
+       <p>技术类型：<slot name="skill"></slot></p>
+   </div>
+</template>
+<script>
+    var zhangfan={
+        template:'#tep'
+    }
+    var app=new Vue({
+        el:"#app",
+        data:{
+           zhangfanData:{
+               bolgUrl:'http://www.cnblogs.com/zr123/',
+               netName:'web小白需努力',
+               skill:'web前端'
+           }
+        },
+        components:{
+            'zhangfan':zhangfan
+        }
+    })
+</script>
+</body>
+</html>

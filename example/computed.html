@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed Option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+<!--computed的作用就是在不污染原始数据的基础上对数据进行加工-->
+<h1>computed Option</h1>
+<hr>
+<div id="app">
+    <p>{{newPrice}}</p>
+    <ul>
+        <li v-for="item in revernews">{{item.title}}-{{item.date}}</li>
+    </ul>
+</div>
+<script>
+    var newList=[
+        {title:'新政策',date:'2018/1/27'},
+        {title:'新政策1',date:'2018/1/28'},
+        {title:'新政策2',date:'2018/1/29'},
+        {title:'新政策3',date:'2018/1/30'},
+        {title:'新政策4',date:'2018/1/31'},
+    ]
+    var app=new Vue({
+        el:"#app",
+        data:{
+            price:100,
+            newList:newList
+        },
+        computed:{
+            newPrice:function(){
+                return this.price='￥'+this.price+'元';
+            },
+            revernews:function(){
+                return this.newList.reverse();//数组反转
+            }
+        }
+    })
+</script>
+</body>
+</html>
